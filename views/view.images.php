@@ -1,0 +1,1 @@
+<h1> Image flipper page</h1>
