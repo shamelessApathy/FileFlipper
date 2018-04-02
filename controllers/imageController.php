@@ -10,9 +10,11 @@ class imageController {
 	}
 	public function change()
 	{
-		var_dump($_POST);
-		echo "<br>";
-		var_dump($_FILES);
+		$ext = $_POST['extension'];
+		$output = $_POST['output'];
+		$image_tmp = $_FILES['file-input']['tmp_name'];
+		$imagick = new Imagick($image_tmp);
+		$imagick->writeImage("/var/www/FileFLipper/testing/test1.png");
 	}
 }
 
