@@ -27,7 +27,6 @@
 				<option value='png'>PNG</option>
 				<option value='gif'>GIF</option>
 				<option value='bmp'>BMP</option>
-				<option value='tiff'>TIFF</option>
 			</select>
 			<label>File</label>
 			<input type='file' name='file' id='file'/>
