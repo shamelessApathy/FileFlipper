@@ -7,6 +7,11 @@ class uri_router {
 			// Remove the "/" pre-pending the URI
 			$splode = explode('/',$uri);
 			$controller = $splode[1];
+			if ($controller === "")
+			{
+				require_once('views/view.home.php');
+				return;
+			}
 			// Checks if a method is set to be called by the controller
 			if (isset($splode[2]) && $splode[2] != null)
 			{
