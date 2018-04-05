@@ -29,7 +29,17 @@
 				<option value='bmp'>BMP</option>
 			</select>
 			<label>File</label>
-			<input type='file' name='file' id='file'/>
+			<input type='file' name='image-file' id='image-file'/>
+			<button type='submit'>Submit</button>
+		</div>
+		<div class='form-group invisible' id='video-form'>
+			<label>Video Output Extension</label>
+			<select name='video-type' id='video-type'>
+				<option>Choose One</option>
+				<option value='flv'>FLV</option>
+			</select>
+			<label>File</label>
+			<input type='file' name='video-file' id='video-file'/>
 			<button type='submit'>Submit</button>
 		</div>
 		</form>

@@ -1,27 +1,17 @@
 <?php
-class fileController {
-	public function sort()
+class FileController {
+	public function image()
 	{
-		var_dump($_POST);
-		echo "<br>";
-		var_dump($_FILES);
-		$fileType = $_POST['type'];
-		if ($fileType === 'image')
-		{
-			$conv = $_POST['image-type'];
-		}
-		$file = $_FILES['file'];
-		$type = $file['type'];
+		$file = $_FILES['image-file'];
+		$conv = $_POST['image-type'];
 		$name = $file['name'];
+		$type = $file['type'];
 		$tmp_name = $file['tmp_name'];
-		if ($fileType === 'image')
-		{
-			$image = new Imagick($tmp_name);
-			$splode = explode('/', $tmp_name);
-			$tmp_name = $splode[1];
-			$image_string = "/var/www/FileFLipper/testing/" . $tmp_name . "." . $conv;
-			$image->writeImage($image_string);
-		}
+		$image = new Imagick($tmp_name);
+		$splode = explode('/', $tmp_name);
+		$tmp_name = $splode[1];
+		$image_string = "/var/www/FileFLipper/testing/" . $tmp_name . "." . $conv;
+		$image->writeImage($image_string);
 		$link = "/testing/" . $tmp_name . "." . $conv;
 		echo "<ul>
 				<li>Convert: $conv</li>
@@ -32,5 +22,38 @@ class fileController {
 		";
 
 		echo "<a href='$link'>$link</a>";
+	}
+	public function video()
+	{
+			$file = $_FILES['video-file'];
+			$conv = $_POST['image-type'];
+			$name = $file['name'];
+			$type= $file['type'];
+			$tmp_name = $file['tmp_name'];
+			$splode = explode('/',$tmp_name);
+			$tmp_name2 = $splode[2];
+			$exec_string = "ffmpeg -i $tmp_name -c:v libx264 -crf 19 /var/www/FileFlipper/testing/$tmp_name2".".flv";
+			exec($exec_string, $out);
+			foreach ($out as $key=>$value)
+			{
+				echo $key;
+			}
+			$link = "/testing/$tmp_name2".".flv";
+			echo "<a href='$link'>$link</a>";
+	}
+	public function sort()
+	{
+		var_dump($_POST);
+		echo "<br>";
+		var_dump($_FILES);
+		$fileType = $_POST['type'];
+		if ($fileType === 'image')
+		{
+			$this->image();
+		}
+		if ($fileType === 'video')
+		{
+			$this->video();
+		}		
 	}
 }

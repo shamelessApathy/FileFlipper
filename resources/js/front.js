@@ -3,6 +3,7 @@ $(function(){
 		this.init = function(){
 			this.fileSelect = $('#file-type');
 			this.imageForm = $('#image-form');
+			this.videoForm = $('#video-form');
 			console.log(this.imageForm);
 		}
 		this.listeners = function()
@@ -17,13 +18,16 @@ $(function(){
 				break;
 				case 'sound': //
 				break;
-				case 'video': //
+				case 'video': this.showVideoForm();
 				break;
 			}
 		}.bind(this)
 		this.showImageForm = function(){
 			this.imageForm.removeClass('invisible');
 		}.bind(this)
+		this.showVideoForm = function(){
+			this.videoForm.removeClass('invisible');
+		}
 		this.init();
 		this.listeners();
 	}
