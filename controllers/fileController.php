@@ -32,6 +32,7 @@ class FileController {
 			$tmp_name = $file['tmp_name'];
 			$splode = explode('/',$tmp_name);
 			$tmp_name2 = $splode[2];
+			// Something about this command not currently working ---- could have been the path didnt have the capital 'L'
 			$exec_string = "ffmpeg -i $tmp_name -c:v libx264 -crf 19 /var/www/FileFlipper/testing/$tmp_name2".".flv";
 			exec($exec_string, $out);
 			foreach ($out as $key=>$value)
